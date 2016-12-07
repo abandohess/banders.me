@@ -55,6 +55,11 @@ footer {
   /*border: 5px solid lightcoral;*/
 }
 
+#navBarRightSideAlt {
+  display: none;
+  justify-content: flex-end;
+}
+
 .navItem {
   margin-right: 15px;
   background: transparent;
@@ -115,6 +120,7 @@ footer {
   display: flex;
   justify-content: flex-end;
   margin: -6px;
+  color: #ecf0f1;
   /*border: 5px solid lightcoral;*/
 }
 
@@ -141,6 +147,7 @@ footer {
 }
 
 #nordicSkater {
+  z-index: 100;
   font-size: 1.5em;
   font-family: 'Lato', sans-serif;
 }
@@ -208,4 +215,44 @@ footer {
 
 .silver {
   color: #ecf0f1;
+}
+
+.fadeMe {
+    opacity:0.0;
+    filter: alpha(opacity=20);
+    background-color: #2980b9;
+    width:100%;
+    height:100%;
+    z-index:10;
+    top:0;
+    left:0;
+    position:fixed;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+  }
+
+#fadedNavigation {
+  display: flex;
+  flex-direction: column;
+  margin-left: 55px;
+  margin-top: 100px;
+}
+
+.fadedNavItem {
+  margin-bottom: 55px;
+  font-size: 1.75em;
+}
+
+@media only screen and (max-width: 660px) {
+
+  #navBarRightSide {
+    display: none;
+  }
+  #navBarRightSideAlt {
+    display: flex;
+  }
+  .fadeMe {
+    opacity: 0.9;
+  }
+
 }
