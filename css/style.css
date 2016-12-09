@@ -3,9 +3,18 @@ nav {
   padding: 2px;
 }
 
-.parallax-window {
+body {
+  font-family: Raleway,sans-serif;
+}
+
+.parallaxTitle {
     min-height: 750px;
     background: transparent;
+}
+
+#parallaxDisco {
+  min-height: 450px;
+  background: transparent;
 }
 
 #paraContain {
@@ -35,4 +44,25 @@ nav {
   font-style: normal;
   font-weight: 380;
   font-size: 2.7em;
+}
+
+.white {
+  color: #ecf0f1;
+}
+
+#resizeMe {
+  max-width:77%;
+  max-height:77%;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#aboutMe {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background: #3498db;
+    position: relative;
+}
+
+#aboutMeText {
+  font-size: 1.7em;
 }
