@@ -119,3 +119,48 @@ li {list-style-type: none;}
   margin-top: 51px;
   background: transparent;
 }
+
+#asbestos {
+  color: #7f8c8d;
+  transition: color .5s ease 0s;
+}
+
+#asbestos:hover {
+  color:#3498db
+}
+
+#asbestos.white {
+  color: #ecf0f1;
+}
+
+#opaque-navbar {
+    background-color: rgba(0,0,0,0);
+  /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
+    height: 60px;
+    border-bottom: 1px;
+    transition: background-color .5s ease 0s;
+}
+
+#opaque-navbar.opaque {
+    background-color: black;
+    height: 60px;
+    transition: background-color .5s ease 0s;
+}
+
+ul.dropdown-menu {
+    background-color: black;
+}
+
+
+@media (max-width: 992px) {
+  body
+  {
+    background:red;
+  }
+  .opaque-navbar {
+    background-color: black;
+    height: 60px;
+    transition: background-color .5s ease 0s;
+  }
+
+}
