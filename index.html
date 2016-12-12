@@ -40,6 +40,16 @@
           <a class="navbar-brand big-brand" href="">LOGO</a>
         </div>
 
+        <!-- Default Menu -->
+        <div class="navbar-collapse collapse" aria-expanded="false">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a class="toggle-drop" href="#Home" id="homie"><p id="asbestos" class="lessWhite" href="#Home">Home</p></a></li>
+              <li><a class="toggle-drop" href="#About" id="aboutie"><p id="asbestos" href="#aboutMe">About</p></a></li>
+              <li><a class="toggle-drop" href="#Portfolio" id="porty"><p id="asbestos" href="myPortfolio">Portfolio</p></a></li>
+              <li><a class="toggle-drop" href="#Contact" id="conty"><p id="asbestos" href="contactMe">Contact</p></a></li>
+          </ul>
+        </div>
+
         <!-- Unfolding Drawer Menu -->
         <div class="menu">
           <ul>
@@ -50,31 +60,22 @@
           </ul>
         </div>
 
-        <!-- Default Menu -->
-        <div class="navbar-collapse collapse" aria-expanded="false">
-          <ul class="nav navbar-nav navbar-right">
-              <li><a class="toggle-drop" href="#Home" id="homie"><p id="asbestos">Home</p></a></li>
-              <li><a class="toggle-drop" href="#About" id="aboutie"><p id="asbestos">About</p></a></li>
-              <li><a class="toggle-drop" href="#Portfolio" id="porty"><p id="asbestos">Portfolio</p></a></li>
-              <li><a class="toggle-drop" href="#Contact" id="conty"><p id="asbestos">Contact</p></a></li>
-          </ul>
-        </div>
-
       </div> <!-- end container-fluid -->
     </nav>
 
     <!-- Home -->
-    <a name="Home"></a>
-    <div class="row">
-      <div class="parallaxTitle low" data-parallax="scroll" data-image-src="img/title.jpg" id="paraContain">
-        <div class="col-xs-12">
-          <div id="titleContainer">
-            <h1 id="header">Andy Bando-Hess</h1>
-            <p>- Software/Web Developer - Dartmouth Sophomore -</p>
+    <section id="Home">
+      <div class="row">
+        <div class="parallaxTitle low" data-parallax="scroll" data-image-src="img/title.jpg" id="paraContain">
+          <div class="col-xs-12">
+            <div id="titleContainer">
+              <h1 id="header">Andy Bando-Hess</h1>
+              <p>- Software/Web Developer - Dartmouth Sophomore -</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- About -->
     <section id="aboutMe">
@@ -108,6 +109,35 @@
     <div class="low" data-parallax="scroll" data-image-src="img/discoInferno.jpg" id="parallaxDisco">
       <p class="white" id="discoInfernoLabel">Andy as Heathcliffe in Disco Inferno</p>
     </div>
+
+    <!-- About -->
+    <section id="aboutMe">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5">
+            <img src="img/me.jpg" class="img-responsive center-block shadow" id="resizeMe">
+          </div>
+
+          <div class="col-md-7">
+            <h2>About</h2>
+            <p id="aboutMeText">
+              Hi, my name is Andy Bando-Hess. I’m an economics major and an aspiring software engineer at Dartmouth College. Though I only started coding a year ago, computer science has quickly become my favorite subject and pastime. Recently I’ve enjoyed building basic video games and become a teacher’s assistant for two computer science professors. It’s awesome to play a formative role introducing my classmates to cs while also solidifying my own knowledge of the subject.
+            </p>
+            <p id="aboutMeText">
+              When I’m not sitting in front of my computer, I enjoy hiking (I recently hiked the Tour de Mont Blanc), playing basketball, and singing the Hamilton soundtrack.
+            </p>
+
+            <div id="iconContainer">
+              <li class="icon"><a class="iconLink" href="#"><i class="fa fa-linkedin-square fa-4x"></a></i></li>
+              <li class="icon"><a class="iconLink" href="https://github.com/abandohess"><i class="fa fa-github-square fa-4x"></i></a></li>
+              <li class="icon"><a class="iconLink" href="#"><i class="fa fa-envelope-square fa-4x"></i></a></li>
+              <li id="resume"><a id="iconMatch" href="#">Resume</a></li>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="myPortfolio">
     </section>
