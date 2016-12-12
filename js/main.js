@@ -1,6 +1,6 @@
 $('document').ready(function($) {
 
-  //transparent menu
+  //Transparent Menu
   $(window).scroll(function() {
     if($(this).scrollTop() < 50) { /*height in pixels when the navbar becomes non opaque*/
       $('#opaque-navbar').removeClass('opaque');  //navbar becomes clear
@@ -39,13 +39,11 @@ $('document').ready(function($) {
   	}
   });
 
-  // collapsable mobile menu
+  // Collapsable Mobile Menu
   $( ".cross" ).hide();
   $( ".menu" ).hide();
   $( ".hamburger" ).click(function() {
   $( ".menu" ).slideToggle( "slow", function() {
-  // $( ".hamburger" ).hide();
-  // $( ".cross" ).show();
   });
   });
 
@@ -54,19 +52,7 @@ $('document').ready(function($) {
   });
   });
 
-  // $( ".cross" ).click(function() {
-  // $( ".menu" ).slideToggle( "slow", function() {
-  // $( ".cross" ).hide();
-  // $( ".hamburger" ).show();
-  // });
-  // });
-
-
-  /**
-   * This part handles the highlighting functionality.
-   * We use the scroll functionality again, some array creation and
-   * manipulation, class adding and class removing, and conditional testing
-   */
+  // Highlight navbar
   var aChildren = $("nav a").children(); // find the a children of the list items
   var aArray = []; // create the empty aArray
   for (var i=0; i < aChildren.length; i++) {
