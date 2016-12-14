@@ -52,8 +52,8 @@ li {list-style-type: none;}
 }
 
 .aboutMeF2 {
-  padding-top: 75px;
-  padding-bottom: 75px;
+  padding-top: 90px;
+  padding-bottom: 90px;
   background: #3498db;
   position: relative;
 }
@@ -315,6 +315,11 @@ input {
 }
 #lowerMaxHeight {
   max-height: 500%;
+}
+
+#discoText {
+  display: block;
+  z-index: 10000000000;
 }
 
 @media only screen and (max-width: 766px) {
