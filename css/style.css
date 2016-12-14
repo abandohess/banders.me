@@ -9,18 +9,6 @@ body {
 
 li {list-style-type: none;}
 
-.parallaxTitle {
-    min-height: 750px;
-    background: transparent;
-}
-
-#parallaxDisco {
-  min-height: 450px;
-  background: transparent;
-  z-index: 10000000;
-
-}
-
 #paraContain {
   display: flex;
   align-items: center;
@@ -34,13 +22,11 @@ li {list-style-type: none;}
 
   color: #bdc3c7;
   background: rgba(0,0,0,.5);
-  /*border-radius: 8px;*/
   padding: 19px 48px;
   margin-bottom: 50px;
   font-size: 1.3em;
   margin-left: -17px;
   margin-right: -17px;
-  /*border: 5px solid lightcoral;*/
 }
 
 #header{
@@ -63,10 +49,13 @@ li {list-style-type: none;}
 }
 
 #aboutMe {
-    padding-top: 75px;
-    padding-bottom: 75px;
-    background: #3498db;
-    position: relative;
+}
+
+.aboutMeF2 {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background: #3498db;
+  position: relative;
 }
 
 #contactMe {
@@ -151,7 +140,6 @@ li {list-style-type: none;}
 
 #opaque-navbar {
     background-color: rgba(0,0,0,0);
-  /* Transparent = rgba(0,0,0,0) / Translucent = (0,0,0,0.5)  */
     height: 60px;
     border-bottom: 1px;
     transition: background-color .5s ease 0s;
@@ -165,21 +153,6 @@ li {list-style-type: none;}
 
 ul.dropdown-menu {
     background-color: black;
-}
-.menu {
-  visibility: hidden;
-}
-
-@media only screen and (max-width: 766px) {
-  #opaque-navbar {
-    background-color: black !important;
-    height: 60px;
-    transition: background-color .5s ease 0s;
-  }
-
-  .menu {
-    visibility: visible;
-  }
 }
 
 .hamburger{
@@ -199,7 +172,7 @@ ul.dropdown-menu {
 }
 
 /*Unfolding Drawer*/
-.menu{z-index:1000000; margin-left: -17px; margin-right: 17px; margin-top: 8px; font-weight:bold; font-size:0.6em !important; background:#131313; position:absolute; width: 100%; text-align:center;}
+.menu{z-index:1000000; margin-left: -17px; margin-right: 17px; margin-top: 8px; font-weight:bold; font-size:0.6em !important; background:#131313; position:absolute; width: 100%; text-align:center; visability: hidden;}
 .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
 .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#1d1f20 1px solid;}
 .menu li:hover{display: block;    background:#181818; padding:15px 0 15px 0; border-bottom:#1d1f20 1px solid;}
@@ -308,14 +281,78 @@ input {
 ::-moz-placeholder {color: #2F3536; opacity: 1;}
 :-moz-placeholder {color: #2F3536; opacity: 1;}
 
-.photo {
-  background-attachment: fixed;
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  height: 450px;
+.parallax-container1 {
   position: relative;
+  overflow: hidden;
+  min-height: 720px;
 }
 
-.summer {
-  background-image: url(img/discoInferno.jpg);
+.parallax-container2 {
+  position: relative;
+  overflow: hidden;
+  min-height: 450px;
 }
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.parallax img {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  max-width: 125%;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+#lowerMaxHeight {
+  max-height: 500%;
+}
+
+@media only screen and (max-width: 766px) {
+  #opaque-navbar {
+    background-color: black !important;
+    height: 60px;
+    transition: background-color .5s ease 0s;
+  }
+  .menu {
+    visibility: visible;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .parallax img {
+    max-width: 150%;
+  }
+}
+@media only screen and (max-width: 790px) {
+  .parallax img {
+    max-width: 180%;
+  }
+}
+@media only screen and (max-width: 645px) {
+  .parallax img {
+    max-width: 210%;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .parallax img {
+    max-width: 265%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .parallax img {
+    max-width: 400%;
+  }
+}
+@media only screen and (min-width: 1075px) {
+  #lowerMaxHeight {
+    max-height: 115%;
+  }

@@ -8,12 +8,14 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href=css/style.css>
+    <link rel="stylesheet" type="text/css" href=css/style2.css>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
-    <!-- contact -->
+
 
   </head>
 
@@ -52,7 +54,7 @@
 
         <!-- Unfolding Drawer Menu -->
         <div class="menu">
-          <ul>
+          <ul id="disappear">
             <a href="#Home" class="hamburgerItem" id="homie"><li>Home</li></a>
             <a href="#About" class="hamburgerItem" id="aboutie"><li>About</li></a>
             <a href="#Portfolio" class="hamburgerItem" id="porty"><li>Portfolio</li></a>
@@ -67,11 +69,13 @@
     <section id="Home">
       <div class="container-fluid">
         <div class="row">
-          <div class="parallaxTitle low" data-parallax="scroll" data-image-src="img/title.jpg" id="paraContain">
-            <div class="col-xs-12">
-              <div id="titleContainer">
-                <h1 id="header">Andy Bando-Hess</h1>
-                <p>- Software/Web Developer - Dartmouth Sophomore -</p>
+          <div class="parallax-container1">
+            <div class="parallax"  id="paraContain"><img src="img/title.jpg" id="lowerMaxHeight">
+              <div class="col-xs-12">
+                <div id="titleContainer">
+                  <h1 id="header">Andy Bando-Hess</h1>
+                  <p>- Software/Web Developer - Dartmouth Sophomore -</p>
+                </div>
               </div>
             </div>
           </div>
@@ -81,43 +85,37 @@
 
     <!-- About -->
     <section id="aboutMe">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-5">
-            <img src="img/me.jpg" class="img-responsive center-block shadow" id="resizeMe">
-          </div>
-
-          <div class="col-md-7">
-            <h2>About</h2>
-            <p id="aboutMeText">
-              Hi, my name is Andy Bando-Hess. I’m an economics major and an aspiring software engineer at Dartmouth College. Though I only started coding a year ago, computer science has quickly become my favorite subject and pastime. Recently I’ve enjoyed building basic video games and become a teacher’s assistant for two computer science professors. It’s awesome to play a formative role introducing my classmates to cs while also solidifying my own knowledge of the subject.
-            </p>
-            <p id="aboutMeText">
-              When I’m not sitting in front of my computer, I enjoy hiking (I recently hiked the Tour de Mont Blanc), playing basketball, and singing the Hamilton soundtrack.
-            </p>
-
-            <div id="iconContainer">
-              <li class="icon"><a class="iconLink" href="#"><i class="fa fa-linkedin-square fa-4x"></a></i></li>
-              <li class="icon"><a class="iconLink" href="https://github.com/abandohess"><i class="fa fa-github-square fa-4x"></i></a></li>
-              <li class="icon"><a class="iconLink" href="#"><i class="fa fa-envelope-square fa-4x"></i></a></li>
-              <li id="resume"><a id="iconMatch" href="#">Resume</a></li>
+      <div class="aboutMeF2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5">
+              <img src="img/me.jpg" class="img-responsive center-block shadow" id="resizeMe">
             </div>
 
+            <div class="col-md-7">
+              <h2>About</h2>
+              <p id="aboutMeText">
+                Hi, my name is Andy Bando-Hess. I’m an economics major and an aspiring software engineer at Dartmouth College. Though I only started coding a year ago, computer science has quickly become my favorite subject and pastime. Recently I’ve enjoyed building basic video games and become a teacher’s assistant for two computer science professors. It’s awesome to play a formative role introducing my classmates to cs while also solidifying my own knowledge of the subject.
+              </p>
+              <p id="aboutMeText">
+                When I’m not sitting in front of my computer, I enjoy hiking (I recently hiked the Tour de Mont Blanc), playing basketball, and singing the Hamilton soundtrack.
+              </p>
+
+              <div id="iconContainer">
+                <li class="icon"><a class="iconLink" href="#"><i class="fa fa-linkedin-square fa-4x"></a></i></li>
+                <li class="icon"><a class="iconLink" href="https://github.com/abandohess"><i class="fa fa-github-square fa-4x"></i></a></li>
+                <li class="icon"><a class="iconLink" id="conty" ><i class="fa fa-envelope-square fa-4x"></i></a></li>
+                <li id="resume"><a id="iconMatch" href="#">Resume</a></li>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
-<!--
-      <div >
-        <div class="row">
-          <div class="col-xs-12">
-            <img src="img/discoInferno.jpg" class="img-responsive shadow" id="leaveSpace">
-          </div>
-        </div>
-      </div> -->
-
+      <div class="parallax-container2">
+        <div class="parallax"><img src="img/discoInferno.jpg"></div>
+      </div>
     </section>
-
-    <div class="parallax-window" data-parallax="scroll" data-image-src="img/discoInferno.jpg" id="parallaxDisco"></div>
 
     <!-- Contact -->
     <section id="contactMe">
@@ -128,18 +126,18 @@
       <div class="container-fluid">
         <div class="inner contact">
           <div class="contact-form">
-            <form id="contact-us" method="post" action="http://formspree.io/abandohess@gmail.com">
+            <form name="myForm" id="contact-us" method="post" onsubmit="return validateForm()" action="http://formspree.io/abandohess@gmail.com">
               <div class="col-xs-3"></div>
               <div class="col-xs-6 wow animated" id="lowerWidth">
                 <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
                 <input type="email" name="_replyto" id="mail" required="required" class="form" placeholder="Email" />
-                <input type="text" name="_subject" id="subject" required="required" class="form" placeholder="Subject" />
+                <input type="text" name="subject" id="subject" class="form" placeholder="Subject" />
                 <textarea name="message" id="message" class="form textarea"  placeholder="Message"></textarea>
               </div><!-- End Right Inputs -->
               <div class="col-xs-3"></div>
               <div class="relative fullwidth col-xs-12">
                 <!-- Send Button -->
-                <button type="submit" id="submit" name="submit" class="form-btn semibold">Send Message</button>
+                <button type="submit" id="submit" name="submit" value="Submit" class="form-btn semibold">Send Message</button>
               </div><!-- End Bottom Submit -->
               <!-- Clear -->
               <div class="clear"></div>
@@ -158,15 +156,9 @@
       </div>
     </section>
 
-    <div class="photo summer"><span>Summer</span></div>
-
     <!-- Portfolio -->
     <section id="myPortfolio">
-      <img src="img/basketball.jpg">
-
     </section>
-
-
 
 
 
@@ -176,10 +168,8 @@
 
     <!-- Parallax Effect -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/parallax.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/main2.js"></script>
   </body>
-
 
 </html>
