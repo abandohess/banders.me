@@ -305,3 +305,15 @@ input {
 :-ms-input-placeholder {color: #2F3536;}
 ::-moz-placeholder {color: #2F3536; opacity: 1;}
 :-moz-placeholder {color: #2F3536; opacity: 1;}
+
+.photo {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  height: 450px;
+  position: relative;
+}
+
+.summer {
+  background-image: url(img/discoInferno.jpg);
+}
