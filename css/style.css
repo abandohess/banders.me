@@ -38,6 +38,8 @@ li {list-style-type: none;}
   padding: 19px 48px;
   margin-bottom: 50px;
   font-size: 1.3em;
+  margin-left: -17px;
+  margin-right: -17px;
   /*border: 5px solid lightcoral;*/
 }
 
@@ -315,5 +317,5 @@ input {
 }
 
 .summer {
-  background-image: url(img/discoInferno.jpg);
+  background-image: url(https://authoritynutrition.com/wp-content/uploads/2013/01/fruits.jpg);
 }
