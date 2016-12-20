@@ -34,7 +34,6 @@ $('document').ready(function($) {
             if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
               $img.css('transform', "translate3D(-50%," + parallax + "px, 0)");
             }
-
           }
 
           // Wait for image load
@@ -53,9 +52,7 @@ $('document').ready(function($) {
             window_width = $(window).width();
             updateParallax(false);
           });
-
         });
-
       };
   }( jQuery ));
 
@@ -104,13 +101,13 @@ $('document').ready(function($) {
   $( ".cross" ).hide();
   $( ".menu" ).hide();
   $( ".hamburger" ).click(function() {
-  $( ".menu" ).slideToggle( "slow", function() {
-  });
+    $( ".menu" ).slideToggle( "slow", function() {
+    });
   });
 
   $( ".hamburgerItem" ).click(function() {
-  $( ".menu" ).slideToggle( "slow", function() {
-  });
+    $( ".menu" ).slideToggle( "slow", function() {
+    });
   });
 
   // Highlight navbar
@@ -129,16 +126,12 @@ $('document').ready(function($) {
 
       for (var i=0; i < aArray.length; i++) {
           var theID = aArray[i];
-
           var divPos = $(theID).offset().top -80; // get the offset of the div from the top of page
           var divHeight = $(theID).height(); // get the height of the div in question
 
-
           if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-
             if (!$("p[href='" + theID + "']").hasClass("lesssWhite")){
               $("p[href='" + theID + "']").addClass("nav-active");
-
             }
             if ($("p[href='" + theID + "']").hasClass("lesssWhite") && $("p[href='" + theID + "']").hasClass("nav-active")) {
               $("p[href='" + theID + "']").removeClass("nav-active");
@@ -157,15 +150,5 @@ $('document').ready(function($) {
           }
       }
   });
-
-  //validate contact form has been filled out properly
-  function validateForm() {
-    var x = document.forms["myForm"]["name"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
-  }
-
 
 });
