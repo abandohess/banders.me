@@ -87,7 +87,7 @@ $('document').ready(function($) {
       $(".logoFontRed").css({"font-size": 1.7 + "em"});
       $(".logoFontBlue").css({"font-size": 1.7 + "em"});
       $(".navLinkFont").css({"font-size": 1.3 + "em"});
-      document.getElementById('logo').style.width = '60px';
+      document.getElementById('logo').style.width = '75px';
     }
     else {
       $(".navLinkFont").css({"margin-left": "0px"})
