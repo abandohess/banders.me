@@ -1,154 +1,93 @@
 $('document').ready(function($) {
+  var resizeWidth = 768;
+  // Navar shrinks when user scrolls down 100 pixels
+  $('#mainNav').affix({
+    offset: {
+      top: 100
+    }
+  });
 
-  ;(function ($) {
-
-      $.fn.parallax = function () {
-        var window_width = $(window).width();
-        // Parallax Scripts
-        return this.each(function(i) {
-          var $this = $(this);
-          $this.addClass('parallax');
-
-          function updateParallax(initial) {
-            var container_height;
-            if (window_width < 601) {
-              container_height = ($this.height() > 0) ? $this.height() : $this.children("img").height();
-            }
-            else {
-              container_height = ($this.height() > 0) ? $this.height() : 500;
-            }
-            var $img = $this.children("img").first();
-            var img_height = $img.height();
-            var parallax_dist = img_height - container_height;
-            var bottom = $this.offset().top + container_height;
-            var top = $this.offset().top;
-            var scrollTop = $(window).scrollTop();
-            var windowHeight = window.innerHeight;
-            var windowBottom = scrollTop + windowHeight;
-            var percentScrolled = (windowBottom - top) / (container_height + windowHeight);
-            var parallax = Math.round((parallax_dist * percentScrolled));
-
-            if (initial) {
-              $img.css('display', 'block');
-            }
-            if ((bottom > scrollTop) && (top < (scrollTop + windowHeight))) {
-              $img.css('transform', "translate3D(-50%," + parallax + "px, 0)");
-            }
-          }
-
-          // Wait for image load
-          $this.children("img").one("load", function() {
-            updateParallax(true);
-          }).each(function() {
-            if(this.complete) $(this).load();
-          });
-
-          $(window).scroll(function() {
-            window_width = $(window).width();
-            updateParallax(false);
-          });
-
-          $(window).resize(function() {
-            window_width = $(window).width();
-            updateParallax(false);
-          });
-        });
-      };
-  }( jQuery ));
-
-  $('.parallax').parallax();
-
-  //Transparent Menu
-  $(window).scroll(function() {
-    if($(this).scrollTop() < 50) { /*height in pixels when the navbar becomes non opaque*/
-      $('#opaque-navbar').removeClass('opaque');  //navbar becomes clear
-      $('[id="asbestos"]').removeClass('white');
-      $('.lessWhite').addClass('lesssWhite');
+  // size of slideshow interface depends on size of image
+  var img = document.getElementById('slidePic');
+  var imgHeight = img.clientHeight;
+  var window_height = $(window).height();
+  if ( imgHeight > window_height) {
+    $(".item").css({"height": window_height});
+  }
+  else {
+    $(".item").css({"height": imgHeight});
+  }
+  // load all slide images into array
+  slidePicsArray = $('.slidePic');
+  $(window).resize(function() {
+    // find the image being displayed
+    for (i = 0; i < slidePicsArray.length; i++) {
+      img = slidePicsArray[i];
+      imgHeight = img.clientHeight;
+      // if not 0, image is being displayed
+      if (imgHeight != 0) {
+        break;
+      }
+    }
+    window_height = $(window).height();
+    if ( imgHeight > window_height) {
+      $(".item").css({"height": window_height});
     }
     else {
-      $('#opaque-navbar').addClass('opaque'); //navbar becomes black
-      $('[id="asbestos"]').addClass('white');
-      $('.lessWhite').removeClass('lesssWhite');
+      $(".item").css({"height": imgHeight});
     }
   });
 
-  // Smooth scrolling
-  var scroll = function(key, val) {
-  	$(key).click(function() {
-      $('body, html').stop().animate({
-        scrollTop: $(val).offset().top
-      }, 1750);
-      return false;
-    });
-  };
+  // If screen is in mobile mode, make sure links appear in proper format
+  var window_width = $(window).width();
+  if( window_width < resizeWidth ) {
+    document.getElementById('navbarRight').style.float = 'none';
 
-  $(function() {
-  	var scrollers = {
-  		'.big-brand': 'body',
-			'[id="homie"]': 'body',
-			'[id="aboutie"]': '#aboutMe',
-			'[id="porty"]': '#myPortfolio',
-			'[id="conty"]': '#contactMe',
-			'.back-to-top': 'body',
-			'.fa-envelope-o': '#Contact'
-  	};
-  	for (var key in scrollers) {
-  		scroll(key, scrollers[key]);
-  	}
+  }
+  else {
+    document.getElementById('navbarRight').style.float = 'right';
+  }
+  $(window).resize(function() {
+    window_width = $(window).width();
+    if (window_width < resizeWidth) {
+      document.getElementById('navbarRight').style.float = 'none';
+    }
+    else {
+      document.getElementById('navbarRight').style.float = 'right';
+    }
   });
 
-  // Collapsable Mobile Menu
-  $( ".cross" ).hide();
-  $( ".menu" ).hide();
-  $( ".hamburger" ).click(function() {
-    $( ".menu" ).slideToggle( "slow", function() {
-    });
-  });
+  // Prevent navbar formatting from getting squished
+  $(window).on("resize", function () {
+    var startResizingNav = 1220;
+    window_width = $(window).width();
+    if (window_width < startResizingNav && window_width > resizeWidth) {
+      //
+      if (window_width > 1000) $(".navLinkFont").css({"margin-left": "-3px"});
 
-  $( ".hamburgerItem" ).click(function() {
-    $( ".menu" ).slideToggle( "slow", function() {
-    });
-  });
-
-  // Highlight navbar
-  var aChildren = $("nav a").children(); // find the a children of the list items
-  var aArray = []; // create the empty aArray
-  for (var i=0; i < aChildren.length; i++) {
-      var aChild = aChildren[i];
-      var ahref = $(aChild).attr('href');
-      aArray.push(ahref);
-  } // this for loop fills the aArray with attribute href values
-
-  $(window).scroll(function(){
-      var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
-      var windowHeight = $(window).height(); // get the height of the window
-      var docHeight = $(document).height();
-
-      for (var i=0; i < aArray.length; i++) {
-          var theID = aArray[i];
-          var divPos = $(theID).offset().top -80; // get the offset of the div from the top of page
-          var divHeight = $(theID).height(); // get the height of the div in question
-
-          if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-            if (!$("p[href='" + theID + "']").hasClass("lesssWhite")){
-              $("p[href='" + theID + "']").addClass("nav-active");
-            }
-            if ($("p[href='" + theID + "']").hasClass("lesssWhite") && $("p[href='" + theID + "']").hasClass("nav-active")) {
-              $("p[href='" + theID + "']").removeClass("nav-active");
-            }
-          }
-          else {
-              $("p[href='" + theID + "']").removeClass("nav-active");
-          }
+      if (window_width < 1000) {
+        $(".navLinkFont").css({"margin-left": "-4px"})
+        $(".logoFontRed").css({"font-size": 1.7 + "em"});
+        $(".logoFontBlue").css({"font-size": 1.7 + "em"});
+        $(".navLinkFont").css({"font-size": 1 + "em"});
+        document.getElementById('logo').style.width = '60px';
       }
-
-      if(windowPos + windowHeight == docHeight) {
-          if (!$("nav li:last-child a").hasClass("nav-active")) {
-              var navActiveCurrent = $(".nav-active").attr("href");
-              $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
-              $("nav li:last-child a").addClass("nav-active");
-          }
+      else {
+        $(".navLinkFont").css({"margin-left": "-3px"})
+        $(".logoFontRed").css({"font-size": 2 + "em"});
+        $(".logoFontBlue").css({"font-size": 2 + "em"});
+        $(".navLinkFont").css({"font-size": 1.5 + "em"});
+        document.getElementById('logo').style.width = '95px';
       }
-  });
+    }
+    else {
+      $(".navLinkFont").css({"margin-left": "0px"})
+      $(".logoFontRed").css({"font-size": 2 + "em"});
+      $(".logoFontBlue").css({"font-size": 2 + "em"});
+      $(".navLinkFont").css({"font-size": 1.5 + "em"});
+      document.getElementById('logo').style.width = '95px';
+    }
+  // Invoke the resize event immediately
+  }).resize();
 
 });
