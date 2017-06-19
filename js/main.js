@@ -1,11 +1,20 @@
 $('document').ready(function($) {
   var resizeWidth = 768;
   // Navar shrinks when user scrolls down 100 pixels
-  $('#mainNav').affix({
-    offset: {
-      top: 100
-    }
-  });
+  if ($(window).width() > 400) {
+    $('#mainNav').affix({
+      offset: {
+        top: 100
+      }
+    });
+  }
+  else {
+    $('#mainNav').affix({
+      offset: {
+        top: 0
+      }
+    });
+  }
 
   // size of slideshow interface depends on size of image
   var img = document.getElementById('slidePic');
