@@ -7,6 +7,16 @@ $('document').ready(function($) {
     }
   });
 
+  // make sure nav bar doesn't take up to much height
+  var window_width = $(window).width();
+  if (window_width < 450) {
+    $(".logoFontRed").css({"font-size": 1.7 + "em"});
+    $(".logoFontBlue").css({"font-size": 1.7 + "em"});
+    var nav = document.getElementById('mainNav');
+    var navHeight = nav.clientHeight;
+    $("#myCarousel").css({"margin-top": navHeight})
+  }
+
   // size of slideshow interface depends on size of image
   var img = document.getElementById('slidePic');
   var imgHeight = img.clientHeight;
