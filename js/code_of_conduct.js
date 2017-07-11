@@ -7,36 +7,6 @@ $('document').ready(function($) {
     }
   });
 
-  // size of slideshow interface depends on size of image
-  var img = document.getElementById('slidePic');
-  var imgHeight = img.clientHeight;
-  var window_height = $(window).height();
-  if ( imgHeight > window_height) {
-    $(".item").css({"height": window_height});
-  }
-  else {
-    $(".item").css({"height": imgHeight});
-  }
-  // load all slide images into array
-  slidePicsArray = $('.slidePic');
-  $(window).resize(function() {
-    // find the image being displayed
-    for (i = 0; i < slidePicsArray.length; i++) {
-      img = slidePicsArray[i];
-      imgHeight = img.clientHeight;
-      // if not 0, image is being displayed
-      if (imgHeight != 0) {
-        break;
-      }
-    }
-    window_height = $(window).height();
-    if ( imgHeight > window_height) {
-      $(".item").css({"height": window_height});
-    }
-    else {
-      $(".item").css({"height": imgHeight});
-    }
-  });
 
   // If screen is in mobile mode, make sure links appear in proper format
   var window_width = $(window).width();
