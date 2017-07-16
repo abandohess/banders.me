@@ -77,12 +77,12 @@ ul.yachtRoutine { list-style-type: none; }
 
 /* Double Lines */
 .subtitle { margin: 0 0 2em 0; overflow: hidden; padding-top: 8px; padding-bottom: 8px; }
-.subpageSubtitle { margin-top: -30px; margin-bottom: 30px; font-style: italic;}
-.fancy { line-height: 0.5; text-align: center; }
+.subpageSubtitle { margin-top: -30px; margin-bottom: 30px;}
+.fancy { line-height: 0.8; text-align: center; }
 .fancy span { display: inline-block; position: relative; }
 .fancy span:before,
 .fancy span:after { content: ""; position: absolute; height: 5px; border-bottom: 1px solid #BE0004;
-  border-top: 1px solid #BE0004; top: 7px; width: 600px; }
+  border-top: 1px solid #BE0004; top: 10px; width: 600px; }
 .fancy span:before { right: 100%; margin-right: 15px; }
 .fancy span:after { left: 100%; margin-left: 15px; }
 
@@ -91,6 +91,7 @@ ul.yachtRoutine { list-style-type: none; }
 .middleLarge { font-size: 1.4em; }
 .larger { font-size: 1.25em; }
 .lessLarge { font-size: 1.1em; }
+.smaller { font-size: .85em; }
 
 .italic { font-style: italic; }
 .inline { display: inline; }
