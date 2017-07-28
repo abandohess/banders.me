@@ -87,12 +87,13 @@ ul.yachtRoutine { list-style-type: none; }
 .fancy span:after { left: 100%; margin-left: 15px; }
 
 .bold { font-weight: bold; }
+.biggest { font-size: 1.7em; }
 .largest { font-size: 1.5em;}
 .middleLarge { font-size: 1.4em; }
 .larger { font-size: 1.25em; }
 .lessLarge { font-size: 1.1em; }
 .smaller { font-size: .85em; }
-
+.centered { text-align: center; margin-top: -30px; }
 .italic { font-style: italic; }
 .inline { display: inline; }
 
@@ -112,3 +113,5 @@ div.captionContainer { text-align: center; padding: 10px 20px; }
 
 #footer { background: #ecf0f1; color: #042c6d; padding-top: 30px; padding-bottom: 55px; position: relative; overflow: hidden; }
 #iconMargin { margin-top: 0px; text-align: center; }
+
+/*.calendar { border: 0; width: 100%; height: 750px; frameborder: 0; scrolling: no; }*/

@@ -8,10 +8,10 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href=css/style.css>
-    <link rel="stylesheet" type="text/css" href=css/hoverEffects.css>
-    <link rel="stylesheet" type="text/css" href=css/dropDownSubmenus.css>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href=../css/style.css>
+    <link rel="stylesheet" type="text/css" href=../css/hoverEffects.css>
+    <link rel="stylesheet" type="text/css" href=../css/dropDownSubmenus.css>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- JS -->
@@ -19,7 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 
-    <link rel="icon" type="image/png" href="img/flag2.png">
+    <link rel="icon" type="image/png" href="../img/flag2.png">
 
   </head>
 
@@ -35,9 +35,9 @@
             <span class="icon-bar middle-bar"></span>
             <span class="icon-bar bottom-bar"></span>
           </button>
-          <a class="navbar-left" href="index.html"><img src="img/flag2.png" id="logo"></a>
+          <a class="navbar-left" href="../index.html"><img src="../img/flag2.png" id="logo"></a>
           <ul class="navbar-left" id="logoText" href="#">
-            <li><a href="index.html" class="logoFontRed">W</a><a href="index.html" class="logoFontBlue">ianno </a><a href="index.html" class="logoFontRed">Y</a><a href="index.html" class="logoFontBlue">acht </a><a href="index.html" class="logoFontRed">C</a><a href="index.html" class="logoFontBlue">lub</a></li>
+            <li><a href="../index.html" class="logoFontRed">W</a><a href="../index.html" class="logoFontBlue">ianno </a><a href="../index.html" class="logoFontRed">Y</a><a href="../index.html" class="logoFontBlue">acht </a><a href="../index.html" class="logoFontRed">C</a><a href="../index.html" class="logoFontBlue">lub</a></li>
             <li><p id="logoSubtitle">Osterville, MA ~ 508-428-2232</p></li>
             <li><p id="logoSubtitle">41°37'20" N | 70°23'41" W</p></li>
           </ul>
@@ -76,38 +76,64 @@
                 <li class="dropdown-submenu">
                   <a href="#" id="hoverDropdown" class="dropdown-toggle" data-toggle="dropdown">Jr. Sailing Program</a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Learn to Sail Program</a></li>
-                    <li><a href="#">Jr. Racing Program</a></li>
-                    <li><a href="#">WYC JSP Handbook</a></li>
+                    <li><a href="learn_to_sail.html">Learn to Sail Program</a></li>
+                    <li><a href="junior_racing_program.html">Jr. Racing Program</a></li>
+                    <!-- add new link -->
+                    <li><a href="http://www.wiannoyc.com/admin/content/upload/jrHandbook.pdf">WYC JSP Handbook</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Adult Sailing Program</a></li>
-              </ul>
-            </li>
-            <!-- Racing -->
-            <li>
-              <a href="#" class="dropdown-toggle navLinkFont" data-toggle="dropdown">Racing<b class="caret"></b></a>
-              <ul class="dropdown-menu multi-level">
-                <li><a href="#">Jr. Racing Schedule</a></li>
-                <li><a href="#">FAB-Family All Boat</a></li>
-                <li><a href="#">Wianno Seniors</a></li>
-                <li><a href="#">Vanguard 15</a></li>
-                <li><a href="#">Haven/Doughdish</a></li>
-                <li><a href="#">420</a></li>
-                <li><a href="#">Optimist</a></li>
-                <li><a href="#">Laser</a></li>
+                <li><a href="adult_sailing_program.html">Adult Sailing Program</a></li>
               </ul>
             </li>
             <!-- Boats -->
             <li>
               <a href="#" class="dropdown-toggle navLinkFont" data-toggle="dropdown">Boats<b class="caret"></b></a>
               <ul class="dropdown-menu multi-level">
-                <li><a href="#">Wianno Senior</a></li>
-                <li><a href="#">Vanguard 15</a></li>
-                <li><a href="#">Havens/Doughdishes</a></li>
+                <li class="dropdown-submenu">
+                  <a href="wianno_senior.html" id="hoverDropdown" class="dropdown-toggle" data-toggle="dropdown-toggle disabled">Wianno Senior</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="ws_overview.html">Overview</a></li>
+                    <li><a href="ws_fleet_contacts.html">Fleet Contacts</a></li>
+                    <li><a href="ws_racing.html">Racing</a></li>
+                    <li><a href="ws_newsletter.html">Newsletter</a></li>
+                    <li><a href="ws_links.html">Links</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="vanguard15.html" id="hoverDropdown" class="dropdown-toggle" data-toggle="dropdown-toggle disabled">Vanguard 15</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="v15_past_results.html">Past Results</a></li>
+                    <li><a href="v15_racing.html">Racing</a></li>
+                    <!-- add link -->
+                    <li><a href="http://www.wiannoyc.com/admin/content/upload/V15_Newsletter.pdf">Newsletter</a></li>
+                    <li><a href="v15_links.html">Links</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="havens_doughdishes.html" id="hoverDropdown" class="dropdown-toggle" data-toggle="dropdown">Havens/Doughdishes</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="havens_doughdishes.html">Overview</a></li>
+                    <li><a href="doughdish_racing.html">Racing</a></li>
+                    <!-- <li><a href="#">Newsletter</a></li> -->
+                  </ul>
+                </li>
               </ul>
             </li>
-            <li><a href="#" class="navLinkFont">Event Calendar</a></li>
+            <!-- Racing -->
+            <li>
+              <a href="#" class="dropdown-toggle navLinkFont" data-toggle="dropdown">Racing<b class="caret"></b></a>
+              <ul class="dropdown-menu multi-level">
+                <li><a href="jr_racing_schedule.html">Jr. Racing Schedule</a></li>
+                <li><a href="FAB_racing.html">FAB-Family All Boat</a></li>
+                <li><a href="ws_racing.html">Wianno Seniors</a></li>
+                <li><a href="v15_racing.html">Vanguard 15</a></li>
+                <li><a href="doughdish_racing.html">Haven/Doughdish</a></li>
+                <li><a href="420_racing.html">420</a></li>
+                <li><a href="optimist_racing.html">Optimist</a></li>
+                <li><a href="laser_racing.html">Laser</a></li>
+              </ul>
+            </li>
+            <li><a href="event_calendar.html" class="navLinkFont">Event Calendar</a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -115,7 +141,8 @@
       <!-- /.container -->
     </nav>
 
-    <img class="headImage" src="img/waterfront.jpg">
+
+    <img class="headImage" src="../img/waterfront.jpg">
 
 
     <!-- Home -->
@@ -190,29 +217,29 @@
       <div class="grid">
 
         <figure class="effect-sadie">
-          <img src="img/wianno2.jpg" alt="img02"/>
+          <img src="../img/wianno2.jpg" alt="img02"/>
           <figcaption>
             <h2>Our Club</h2>
             <p>Welcome to the Wianno Yacht Club home page. The Wianno Yacht Club is located in Osterville, Massachusetts. The Junior Sailing Program, which is open to non-members, is dedicated to teaching kids how to sail in a fun and encouraging environment.</p>
-            <a href="#">View more</a>
+            <a href="history.html">View more</a>
           </figcaption>
         </figure>
 
         <figure class="effect-sadie">
-          <img src="img/seniorRace.jpg" alt="img02"/>
+          <img src="../img/seniorRace.jpg" alt="img02"/>
           <figcaption>
             <h2>Racing</span></h2>
             <p>Join the Sailors of the Wianno Yacht Club on West Bay each Saturday morning from June 26th through September 4th. Sailors young and old of all abilities are always welcome to bring any type of boat on hand.</p>
-            <a href="#">View more</a>
+            <a href="FAB_racing.html">View more</a>
           </figcaption>
         </figure>
 
         <figure class="effect-sadie">
-          <img src="img/juniorSailing2.jpg" alt="img02"/>
+          <img src="../img/juniorSailing2.jpg" alt="img02"/>
           <figcaption>
             <h2>Sailing Programs</h2>
             <p>Registration opened May 16 for members and May 23 for non-members. If you are interested, please print a registration form and mail it to the address indicated on the form.  The programs are limited in size.</p>
-            <a href="#">View more</a>
+            <a href="junior_racing_program.html">View more</a>
           </figcaption>
         </figure>
 
@@ -236,7 +263,7 @@
 
 
 
-    <script src="js/code_of_conduct.js"></script>
+    <script src="../js/code_of_conduct.js"></script>
   </body>
 
 </html>
