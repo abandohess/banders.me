@@ -2,19 +2,18 @@
 // image.src = '../img/amsterReflection.jpg';
 
 var img = document.getElementById('working');
-img.onload = cutImageUp;
 var width = img.clientWidth;
 var height = img.clientHeight;
 
 function cutImageUp() {
     var imagePieces = [];
-    for(var x = 0; x < 3; ++x) {
-        for(var y = 0; y < 3; ++y) {
+    for(var x = 0; x < 2; ++x) {
+        for(var y = 0; y < 2; ++y) {
             var canvas = document.createElement('canvas');
-            canvas.width = width/3;
-            canvas.height = height/3;
+            canvas.width = width/2;
+            canvas.height = height/2;
             var context = canvas.getContext('2d');
-            context.drawImage(img, x * width/3, y * height/3, width/3, height/3, 0, 0, canvas.width, canvas.height);
+            context.drawImage(img, x * width/2, y * height/2, width/2, height/2, 0, 0, canvas.width, canvas.height);
             imagePieces.push(canvas.toDataURL());
         }
     }
@@ -23,7 +22,7 @@ function cutImageUp() {
 
     // load one piece onto the page
     var size = imagePieces.size;
-
+    console.log(size);
     var anImageElement1 = document.getElementById('piece1');
     anImageElement1.src = imagePieces[0];
     var anImageElement2 = document.getElementById('piece2');
