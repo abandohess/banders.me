@@ -25,7 +25,7 @@ function cutImageUp() {
     var size = imagePieces.size;
     alert(size);
     var anImageElement = document.getElementById('newImage');
-    anImageElement.src = imagePieces[0];
+    anImageElement.src = imagePieces[5];
 }
 
 setTimeout(function(){ alert(width); }, 3000);
