@@ -1,47 +1,242 @@
-// var image = new Image();
-// image.src = '../img/amsterReflection.jpg';
+const PUZZLEDIFFICULTY = 4;
+const PUZZLEHOVERTINT = '#009900';
 
-var img = document.getElementById('working');
-var width = img.clientWidth;
-var height = img.clientHeight;
+var canvas;
+var stage;
 
-function cutImageUp() {
-    var imagePieces = [];
-    for(var x = 0; x < 2; ++x) {
-        for(var y = 0; y < 2; ++y) {
-            var canvas = document.createElement('canvas');
-            canvas.width = width/2;
-            canvas.height = height/2;
-            var context = canvas.getContext('2d');
-            context.drawImage(img, x * width/2, y * height/2, width/2, height/2, 0, 0, canvas.width, canvas.height);
-            imagePieces.push(canvas.toDataURL());
-        }
-    }
+var img;
+var pieces;
+var puzzleWidth;
+var puzzleHeight;
+var pieceWidth;
+var pieceHeight;
+var currentPiece;
+var currentDropPiece;
 
-    // imagePieces now contains data urls of all the pieces of the image
+var realPuzzleWidth;
+var realPuzzleHeight;
+var realPieceWidth;
+var realPieceHeight;
 
-    // load one piece onto the page
-    var size = imagePieces.size;
-    console.log(size);
-    var anImageElement1 = document.getElementById('piece1');
-    anImageElement1.src = imagePieces[0];
-    var anImageElement2 = document.getElementById('piece2');
-    anImageElement2.src = imagePieces[1];
-    var anImageElement3 = document.getElementById('piece3');
-    anImageElement3.src = imagePieces[2];
-    var anImageElement4 = document.getElementById('piece4');
-    anImageElement4.src = imagePieces[3];
-    var anImageElement5 = document.getElementById('piece5');
-    anImageElement5.src = imagePieces[4];
-    var anImageElement6 = document.getElementById('piece6');
-    anImageElement6.src = imagePieces[5];
-    var anImageElement7 = document.getElementById('piece7');
-    anImageElement7.src = imagePieces[6];
-    var anImageElement8 = document.getElementById('piece8');
-    anImageElement8.src = imagePieces[7];
-    var anImageElement9 = document.getElementById('piece9');
-    anImageElement9.src = imagePieces[8];
+var mouse;
+
+function init(){
+    img = new Image();
+    img.addEventListener('load',onImage,false);
+    img.src = "img/amsterReflection.jpg";
 }
 
-setTimeout(function(){ alert(width); }, 3000);
-setTimeout(cutImageUp, 5000);
+function onImage(e){
+    pieceWidth = Math.floor(img.width / PUZZLEDIFFICULTY);
+    pieceHeight = Math.floor(img.height / PUZZLEDIFFICULTY);
+    puzzleWidth = pieceWidth * PUZZLEDIFFICULTY;
+    puzzleHeight = pieceHeight * PUZZLEDIFFICULTY;
+    setCanvas();
+    initPuzzle();
+}
+
+function setCanvas(){
+    canvas = document.getElementById('canvas');
+    stage = canvas.getContext('2d');
+    canvas.width = puzzleWidth;
+    canvas.height = puzzleHeight;
+    canvas.style.border = "8px solid #1abc9c";
+    canvas.style.borderRadius = "8px";
+}
+
+function initPuzzle(){
+    pieces = [];
+    mouse = {x:0,y:0};
+    currentPiece = null;
+    currentDropPiece = null;
+
+    realPieceWidth = Math.floor(canvas.clientWidth / PUZZLEDIFFICULTY);
+    realPieceHeight = Math.floor(canvas.clientHeight / PUZZLEDIFFICULTY);
+    realPuzzleWidth = pieceWidth * PUZZLEDIFFICULTY;
+    realPuzzleHeight = pieceHeight * PUZZLEDIFFICULTY;
+
+    stage.drawImage(img, 0, 0, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
+
+    // console.log("puzzleWidth: " + canvas.clientWidth);
+    // console.log("puzzleHeight: " + canvas.clientHeight);
+    // console.log("pieceWidth: " + pieceWidth);
+    // console.log("pieceHeight: " + pieceHeight);
+
+    //createTitle("Click to Start Puzzle");
+    buildPieces();
+}
+
+function buildPieces(){
+    var i;
+    var piece;
+    var xPos = 0;
+    var yPos = 0;
+    var realXPos = 0;
+    var realYPos = 0;
+    for(i = 0;i < (PUZZLEDIFFICULTY * PUZZLEDIFFICULTY);i++){
+        piece = {};
+        piece.sx = xPos;
+        piece.sy = yPos;
+        piece.realSx = realXPos;
+        piece.realSy = realYPos;
+
+        console.log("(x, y): (" + piece.sx + ", " + piece.sy + ")");
+        pieces.push(piece);
+        xPos += pieceWidth;
+        realXPos += realPieceWidth
+        if(xPos >= puzzleWidth){
+            xPos = 0;
+            yPos += pieceHeight;
+            realXPos = 0;
+            realYPos += realPieceHeight;
+        }
+    }
+    document.getElementById("shuffle").onmousedown = shufflePuzzle;
+}
+
+function shufflePuzzle(){
+    pieces = shuffleArray(pieces);
+    stage.clearRect(0,0,puzzleWidth,puzzleHeight);
+    var i;
+    var piece;
+    var xPos = 0;
+    var yPos = 0;
+    var realXPos = 0;
+    var realYPos = 0;
+    stage.lineWidth=10;
+    stage.strokeStyle="#1abc9c"
+    for(i = 0;i < pieces.length-1;i++){
+        piece = pieces[i];
+        piece.xPos = xPos;
+        piece.yPos = yPos;
+        piece.realXPos = realXPos;
+        piece.realYPos = realYPos;
+        stage.drawImage(img, piece.sx, piece.sy, pieceWidth, pieceHeight, xPos, yPos, pieceWidth, pieceHeight);
+        stage.strokeRect(xPos, yPos, pieceWidth, pieceHeight);
+        xPos += pieceWidth;
+        realXPos += realPieceWidth;
+        if(xPos >= puzzleWidth){
+            xPos = 0;
+            yPos += pieceHeight;
+            realXPos = 0;
+            realYPos += realPieceHeight;
+        }
+    }
+    //document.getElementById("canvas").addEventListener("mousedown", onPuzzleClick);
+    document.getElementById("canvas").onmousedown = onPuzzleClick;
+}
+
+function shuffleArray(o){
+    for(var j, x, i = o.length-1; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
+
+function onPuzzleClick(e){
+    mouse.x = e.layerX;
+    mouse.y = e.layerY;
+    console.log("mouse: (" + e.layerX + ", " + e.layerY + ")");
+    currentPiece = checkPieceClicked();
+    if(currentPiece != null){
+        stage.clearRect(currentPiece.xPos, currentPiece.yPos, pieceWidth, pieceHeight);
+        stage.save();
+        stage.globalAlpha = .9;
+        stage.drawImage(img,  currentPiece.sx, currentPiece.sy, pieceWidth, pieceHeight, mouse.x - (pieceWidth / 2), mouse.y - (pieceHeight / 2), pieceWidth, pieceHeight);
+        stage.restore();
+        document.onmousemove = updatePuzzle;
+        document.onmouseup = pieceDropped;
+    }
+}
+
+function checkPieceClicked(){
+    var i;
+    var piece;
+    for(i = 0;i < pieces.length;i++){
+        piece = pieces[i];
+        if(mouse.x < piece.realXPos || mouse.x > (piece.realXPos + realPieceWidth) || mouse.y < piece.realYPos || mouse.y > (piece.realYPos + realPieceHeight)){
+            //PIECE NOT HIT
+        }
+        else{
+            return piece;
+        }
+    }
+    return null;
+}
+
+function updatePuzzle(e){
+    currentDropPiece = null;
+    if(e.layerX || e.layerX == 0){
+        mouse.x = e.layerX - canvas.offsetLeft;
+        mouse.y = e.layerY - canvas.offsetTop;
+    }
+    else if(e.offsetX || e.offsetX == 0){
+        mouse.x = e.offsetX - canvas.offsetLeft;
+        mouse.y = e.offsetY - canvas.offsetTop;
+    }
+    stage.clearRect(0,0,puzzleWidth,puzzleHeight);
+    var i;
+    var piece;
+    for(i = 0;i < pieces.length;i++){
+        piece = pieces[i];
+        if(piece == currentPiece){
+            continue;
+        }
+        stage.drawImage(img, piece.sx, piece.sy, pieceWidth, pieceHeight, piece.xPos, piece.yPos, pieceWidth, pieceHeight);
+        stage.strokeRect(piece.xPos, piece.yPos, pieceWidth,pieceHeight);
+        if(currentDropPiece == null){
+            if(mouse.x < piece.xPos || mouse.x > (piece.xPos + pieceWidth) || mouse.y < piece.yPos || mouse.y > (piece.yPos + pieceHeight)){
+                //NOT OVER
+            }
+            else{
+                currentDropPiece = piece;
+                stage.save();
+                stage.globalAlpha = .4;
+                stage.fillStyle = PUZZLEHOVERTINT;
+                stage.fillRect(currentDropPiece.xPos,currentDropPiece.yPos,pieceWidth, pieceHeight);
+                stage.restore();
+            }
+        }
+    }
+    stage.save();
+    stage.globalAlpha = .6;
+    stage.drawImage(img, currentPiece.sx, currentPiece.sy, pieceWidth, pieceHeight, mouse.x - (pieceWidth / 2), mouse.y - (pieceHeight / 2), pieceWidth, pieceHeight);
+    stage.restore();
+    stage.strokeRect( mouse.x - (pieceWidth / 2), mouse.y - (pieceHeight / 2), pieceWidth,pieceHeight);
+}
+
+function pieceDropped(e){
+    document.onmousemove = null;
+    document.onmouseup = null;
+    if(currentDropPiece != null){
+        var tmp = {xPos:currentPiece.xPos,yPos:currentPiece.yPos};
+        currentPiece.xPos = currentDropPiece.xPos;
+        currentPiece.yPos = currentDropPiece.yPos;
+        currentDropPiece.xPos = tmp.xPos;
+        currentDropPiece.yPos = tmp.yPos;
+    }
+    resetPuzzleAndCheckWin();
+}
+
+function resetPuzzleAndCheckWin(){
+    stage.clearRect(0,0,puzzleWidth,puzzleHeight);
+    var gameWin = true;
+    var i;
+    var piece;
+    for(i = 0;i < pieces.length;i++){
+        piece = pieces[i];
+        stage.drawImage(img, piece.sx, piece.sy, pieceWidth, pieceHeight, piece.xPos, piece.yPos, pieceWidth, pieceHeight);
+        stage.strokeRect(piece.xPos, piece.yPos, pieceWidth,pieceHeight);
+        if(piece.xPos != piece.sx || piece.yPos != piece.sy){
+            gameWin = false;
+        }
+    }
+    if(gameWin){
+        setTimeout(gameOver,500);
+    }
+}
+
+function gameOver(){
+    document.onmousedown = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+    initPuzzle();
+}
